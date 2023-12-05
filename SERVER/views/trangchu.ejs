@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="xuly.js"></script>
+    <script>$(document).ready(function(){
+
+    });
+    </script>
+    <link rel="stylesheet" type="text/css" href="layout.css"/>
+</head>
+<body>
+    <div id="wrapper">
+    <div id="loginForm">
+        <h3>What's your name?</h3>
+        <input type="text" id="txtUsername">
+        <input type="button" value="Register" id="btnRegister">
+    </div>
+    <div id="chatForm">
+        <div id="left">
+            <div id="boxTitle">Users Online</div>
+            <div id="boxContent">
+                <div class="useronline">Teo Em</div>
+                <div class="useronline">Teo Em</div>
+                <div class="useronline">Teo Em</div>
+                <div class="useronline">Teo Em</div>
+                <div class="useronline">Teo Em</div>
+            </div>
+
+        </div>
+        <div id="right">
+            <div id="sayHi">Hello <span id="currentUser">Teo</span>
+                <input type="button" id="btnLogout" value="Logout">
+            </div>
+            <div id = "listMessages"></div>
+            <input type="text" id="txtMessage"/>
+            <input type="button" id="btnSendMessage" value="send"/>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
