@@ -14,12 +14,12 @@ io.on("connection",function(socket){
     socket.on("client-send-Username",function(data){
         console.log(data);
         if(mangUser.indexOf(data)>=0){ // xem xo dât trong mang khong
-            socket.emit("server-send-dki-thatbai");
+            socket.emit("server-send-dki-thatbai"); /// send ve thang gui data
         }else{
             mangUser.push(data);
             socket.Username = data;
-            socket.emit("server-send-dki-thanhcong", data);
-            io.sockets.emit("server-send-danhsach_Users", mangUser);
+            socket.emit("server-send-dki-thanhcong", data);// send data cho may thang con lai tru thang gui data
+            io.sockets.emit("server-send-danhsach_Users", mangUser); // send data tat ca
 
         }
     });
@@ -34,6 +34,15 @@ io.on("connection",function(socket){
     socket.on("user-send-message",function(data){
         // phat data xuong tat ca moi nguoi
         io.sockets.emit("server-send-mesage",{un:socket.Username, nd:data});
+    })
+
+    socket.on("toi-dang-go-chu",function(){
+        var s = socket.Username +"  dang go chu";
+        io.sockets.emit("ai-do-dang-go-chu",s)
+    })
+    socket.on("toi-stop-go-chu",function(){
+        
+        io.sockets.emit("ai-do-stop-go-chu",s)
     })
 })
 app.get("/",function(reg,res){

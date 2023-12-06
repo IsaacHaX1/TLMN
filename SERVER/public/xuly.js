@@ -21,6 +21,16 @@ socket.on("server-send-mesage", function(data){
     $("#listMessages").append("<div class='ms'>"+data.un+ ":"+data.nd+"</div>");
 
 })
+
+socket.on("ai-do-dang-go-chu", function(data){
+    console.log(data);
+    $("#thongbao").html(data);
+})
+
+socket.on("ai-do-stop-go-chu", function(data){
+    console.log(data);
+    $("#thongbao").html(data);
+})
 $(document).ready(function(){
    // alert(1);
    $("#loginForm").show();
@@ -34,6 +44,15 @@ $(document).ready(function(){
     socket.emit("logout");
     $("#chatForm").hide(2000);
     $("#loginForm").show(1000);
+   })
+
+
+   $("#txtMessage").focusin(function(){
+    socket.emit("toi-dang-go-chu");
+   })
+
+   $("#txtMessage").focusout(function(){
+    socket.emit("toi-dang-go-chu");
    })
 
    $("#btnSendMessage").click(function(){
