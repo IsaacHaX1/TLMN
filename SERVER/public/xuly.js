@@ -15,6 +15,11 @@ socket.on("server-send-danhsach_Users",function(data){
     data.forEach(function(i){
         $("#boxContent").append("<div class='user'>"+i+"</div>");
     });
+});
+
+socket.on("server-send-mesage", function(data){
+    $("#listMessages").append("<div class='ms'>"+data.un+ ":"+data.nd+"</div>");
+
 })
 $(document).ready(function(){
    // alert(1);
@@ -32,7 +37,8 @@ $(document).ready(function(){
    })
 
    $("#btnSendMessage").click(function(){
-    socket.emit("user-send-message", $("txtMessage").val());
+    console.log($("#txtMessage").val());
+    socket.emit("user-send-message", $("#txtMessage").val());
    })
 
 })

@@ -32,7 +32,8 @@ io.on("connection",function(socket){
     })
 
     socket.on("user-send-message",function(data){
-        
+        // phat data xuong tat ca moi nguoi
+        io.sockets.emit("server-send-mesage",{un:socket.Username, nd:data});
     })
 })
 app.get("/",function(reg,res){
