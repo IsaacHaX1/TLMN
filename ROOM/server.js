@@ -11,9 +11,16 @@ var mangUser = [];
 
 io.on("connection",function(socket){
     console.log("Co nguoi ket noi "+socket.id);
-    console.log(socket.adapter.room);
+    console.log(socket.adapter.rooms);
+   // console.log(socket.adapter.rooms);
+   socket.on("tao-room",function(data){
+    console.log(data);
+    socket.join("data");
+    });
 
-})
+});
+
+
 app.get("/",function(reg,res){
     res.render("trangchu");
 });

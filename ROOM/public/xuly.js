@@ -10,6 +10,9 @@ socket.on("server-send-dki-thanhcong",function(data){
 
 $(document).ready(function(){
    // alert(1);
-
+   $("#btnTaoRoom").click(function(){
+      console.log("ccssss")
+      socket.emit("tao-room", $("#txtRoom").val())
+;   })
 
 })
