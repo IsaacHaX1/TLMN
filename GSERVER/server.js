@@ -23,8 +23,9 @@ var romfunction = {
             // join room co sans
             return [true, roomsGame[i],i];
         } 
+            }
             return [false];
-    }
+
 } else return [false];
 }
 }
@@ -37,14 +38,15 @@ io.on('connection', function (socket) {
 
     socket.on("tao-room", function (data) {
         let checkroom = romfunction.checkRooms();
+        console.log(checkroom);
         if (checkroom[0]) {
-
+            let idz = checkroom[2];
             socket.join(checkroom[1].phong);
             socket.phong = checkroom[1].phong;
             roomsGame[checkroom[2]].id.push(checkroom[1].id[0]);
             console.log(roomsGame);
 
-            socket.emit("tao-room-return", obj);
+            socket.emit("tao-room-return", roomsGame[idz]);
 
         } else {
             let ran = Math.floor(Math.random() * 10) + "" + (Math.random() + 1).toString(36).substring(7);
